@@ -1,0 +1,11 @@
+{
+  "$schema": "https://wails.io/schemas/config.v2.json",
+  "name": "GameDock",
+  "outputfilename": "GameDock",
+  "frontend:install": "npm ci",
+  "frontend:build": "npm run build",
+  "frontend:dev:watcher": "npm run dev",
+  "frontend:dev:serverUrl": "auto",
+  "author": {"name": "GameDock"},
+  "info": {"productName": "GameDock", "productVersion": "0.1.1", "comments": "Local Minecraft server manager"}
+}

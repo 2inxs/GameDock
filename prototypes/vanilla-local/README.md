@@ -35,7 +35,7 @@ GameDock — экспериментальный проект для тестов
 ```powershell
 go test ./...
 go vet ./...
-go build -trimpath -buildvcs=false -tags=desktop,production -ldflags=-H=windowsgui -o GameDock.exe .
+go build -trimpath -buildvcs=false '-tags=desktop,production' '-ldflags=-H=windowsgui' -o GameDock.exe .
 ```
 
 GitHub Actions проверяет исходники на Windows при push и в pull request. Ручной запуск доступен после добавления workflow в основную ветку. В проверку входят обычные тесты, `go vet`, проверка синтаксиса JavaScript и сборка. Тесты с официальным JAR запускаются отдельно, а сборка в CI служит только для проверки. [Конфигурация CI](../../.github/workflows/vanilla-local.yml).

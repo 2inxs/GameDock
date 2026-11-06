@@ -48,4 +48,4 @@ jobs:
         run: node --check frontend/app.js
 
       - name: Build the Windows desktop app
-        run: go build -trimpath -buildvcs=false -tags=desktop,production -ldflags=-H=windowsgui -o "$env:RUNNER_TEMP/GameDock.exe" .
+        run: go build -trimpath -buildvcs=false '-tags=desktop,production' '-ldflags=-H=windowsgui' -o "$env:RUNNER_TEMP/GameDock.exe" .

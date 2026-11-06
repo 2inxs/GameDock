@@ -1,0 +1,60 @@
+:root {
+  font-family: "Segoe UI", system-ui, sans-serif;
+  color: #f1f1e8;
+  background: #161b18;
+  color-scheme: dark;
+  --muted: #b7c2b9;
+  --border: #3b493f;
+  --surface: #222c25;
+  --accent: #c2e991;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+[hidden] { display: none !important; }
+body { margin: 0; }
+.shell { width: min(1100px, 100%); margin: 0 auto; padding: 36px 32px; }
+.masthead, .section-head { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+.masthead { margin-bottom: 22px; }
+.eyebrow { color: var(--accent); font-size: 0.85rem; }
+h1 { margin: 0; font-size: 2.65rem; letter-spacing: -0.045em; }
+h2 { margin: 0; font-size: 1.25rem; }
+p { color: var(--muted); margin: 8px 0 0; line-height: 1.45; }
+.status { border: 1px solid var(--border); padding: 8px 12px; border-radius: 6px; color: var(--muted); }
+.status[data-state="running"] { color: var(--accent); }
+.status[data-state="error"] { color: #ffbab0; }
+.card, .feedback { padding: 20px; border: 1px solid var(--border); border-radius: 10px; background: var(--surface); }
+.feedback { margin: 0 0 16px; padding: 12px 16px; color: var(--accent); overflow-wrap: anywhere; }
+.feedback[data-error="true"] { color: #ffbab0; border-color: #855146; }
+.actions, .terms, .field-pair { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; }
+.actions, .terms, .fields { margin-top: 16px; }
+.fields { display: grid; grid-template-columns: minmax(0, 1fr) 150px; gap: 16px; }
+.field-pair { flex-wrap: nowrap; }
+.endpoint { display: grid; gap: 3px; }
+.endpoint span, .small { color: var(--muted); font-size: 0.85rem; }
+code, pre { font-family: Consolas, monospace; }
+.endpoint code { color: var(--accent); }
+button, input, select { font: inherit; }
+button, input:not([type="checkbox"]), select { min-height: 38px; border: 1px solid #56685b; border-radius: 6px; padding: 7px 11px; }
+button { color: inherit; background: #2d3b32; cursor: pointer; }
+button:not(:disabled):hover { background: #384b3e; }
+button.primary { background: var(--accent); border-color: var(--accent); color: #1a2b15; font-weight: 600; }
+button.primary:not(:disabled):hover { background: #d5f3b0; }
+button.link { background: transparent; border-color: transparent; color: var(--accent); text-decoration: underline; }
+button:disabled, input:disabled, select:disabled { opacity: 0.55; cursor: default; }
+input:not([type="checkbox"]), select { width: 100%; min-width: 0; background: #161e19; color: inherit; }
+label { display: block; margin-bottom: 5px; }
+.check { display: inline-flex; align-items: center; gap: 6px; margin: 0; }
+input[type="checkbox"] { accent-color: var(--accent); }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+.monitor { display: grid; grid-template-columns: minmax(0, 1fr) minmax(230px, 0.5fr); gap: 16px; margin-top: 16px; }
+.logs { height: 235px; overflow: auto; margin: 14px 0 0; padding: 12px; border: 1px solid var(--border); border-radius: 6px; background: #111713; font-size: 0.82rem; line-height: 1.45; white-space: pre-wrap; overflow-wrap: anywhere; }
+.backups button, .backups select { margin-top: 10px; }
+.backups label { margin: 15px 0 0; }
+dialog { max-width: min(420px, calc(100% - 32px)); padding: 22px; border: 1px solid var(--border); border-radius: 10px; color: inherit; background: var(--surface); }
+dialog::backdrop { background: rgb(10 15 11 / 75%); }
+
+@media (max-width: 650px) {
+  .shell { padding: 24px 16px; }
+  .monitor, .fields { grid-template-columns: minmax(0, 1fr); }
+  .status { font-size: 0.85rem; }
+}

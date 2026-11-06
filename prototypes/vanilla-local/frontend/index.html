@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <title>GameDock</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <main class="shell">
+    <header class="masthead">
+      <div>
+        <span class="eyebrow">Minecraft Java Edition</span>
+        <h1>GameDock</h1>
+      </div>
+      <div id="connection" class="status" role="status" data-state="loading">Подключение…</div>
+    </header>
+
+    <p class="small">GameDock — неофициальный продукт для Minecraft. Mojang и Microsoft не одобряли этот проект и не связаны с ним.</p>
+
+    <p id="feedback" class="feedback" role="status" hidden></p>
+    <p id="notice" class="feedback" role="status" hidden></p>
+
+    <section id="setup" class="card" aria-labelledby="setup-title" hidden>
+      <h2 id="setup-title">Настройка сервера</h2>
+      <p>Загрузите официальный Vanilla 1.21.11 или импортируйте сервер этой же версии.</p>
+      <p>Перед импортом остановите исходный сервер. Выберите папку с <code>server.properties</code> и миром <code>world</code>. GameDock перенесёт мир и списки игроков и создаст настройки локального сервера с проверкой аккаунтов.</p>
+      <div class="terms">
+        <label class="check"><input id="eula" type="checkbox"> Принимаю лицензионное соглашение Minecraft</label>
+        <button id="eula-link" class="link" type="button">Открыть EULA</button>
+      </div>
+      <div class="actions">
+        <button id="setup-download" class="primary" type="button" disabled>Загрузить сервер</button>
+        <button id="setup-import" type="button" disabled>Импортировать папку</button>
+      </div>
+    </section>
+
+    <section id="server" class="card" aria-labelledby="server-title" hidden>
+      <div class="section-head">
+        <div>
+          <h2 id="server-title">Локальный сервер</h2>
+          <p id="version"></p>
+        </div>
+        <div class="endpoint"><span>Адрес для игры</span><code id="address">127.0.0.1:25565</code></div>
+      </div>
+      <div class="fields">
+        <div>
+          <label for="java">Путь к Java 21</label>
+          <div class="field-pair">
+            <input id="java" type="text" placeholder="Полный путь к java.exe" spellcheck="false" autocomplete="off">
+            <button id="pick-java" type="button">Выбрать</button>
+          </div>
+        </div>
+        <div>
+          <label for="memory">Память, МиБ</label>
+          <input id="memory" type="number" min="1024" max="8192" step="1" value="2048" inputmode="numeric" required>
+        </div>
+      </div>
+      <div class="actions">
+        <button id="start" class="primary" type="button" disabled>Запустить</button>
+        <button id="stop" type="button" disabled>Остановить</button>
+        <button id="force-stop" type="button" disabled hidden>Завершить принудительно…</button>
+      </div>
+    </section>
+
+    <div id="monitor" class="monitor" hidden>
+      <section class="card" aria-labelledby="log-title">
+        <div class="section-head">
+          <h2 id="log-title">Журнал сервера</h2>
+          <label class="check small"><input id="follow" type="checkbox" checked> Автопрокрутка</label>
+        </div>
+        <pre id="logs" class="logs" tabindex="0" aria-label="Журнал сервера">Журнал пока пуст.</pre>
+      </section>
+      <section class="card backups" aria-labelledby="backups-title">
+        <h2 id="backups-title">Резервные копии</h2>
+        <p>Копия включает мир и списки игроков. Настройки локального запуска создаёт GameDock.</p>
+        <button id="backup" type="button" disabled>Создать копию</button>
+        <label for="backup-select">Копия для восстановления</label>
+        <select id="backup-select" disabled><option value="">Копий пока нет</option></select>
+        <button id="restore" type="button" disabled>Восстановить</button>
+      </section>
+    </div>
+  </main>
+  <dialog id="restore-dialog" aria-labelledby="restore-title">
+    <h2 id="restore-title">Восстановить резервную копию?</h2>
+    <p>Текущие данные сервера будут заменены данными из копии <strong id="restore-name"></strong>. Прежняя папка сохранится отдельно.</p>
+    <form class="actions" method="dialog">
+      <button type="submit" value="cancel" autofocus>Отмена</button>
+      <button class="primary" type="submit" value="confirm">Восстановить</button>
+    </form>
+  </dialog>
+  <dialog id="force-dialog" aria-labelledby="force-title">
+    <h2 id="force-title">Прервать остановку сервера?</h2>
+    <p>Если сервер ещё сохраняет мир, принудительное завершение может повредить данные. Можно закрыть это окно и продолжить ждать.</p>
+    <form class="actions" method="dialog">
+      <button type="submit" value="cancel" autofocus>Продолжить ждать</button>
+      <button type="submit" value="confirm">Завершить принудительно</button>
+    </form>
+  </dialog>
+</body>
+</html>

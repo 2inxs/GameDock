@@ -1,0 +1,60 @@
+# Compiled binaries and third-party installers
+*.exe
+*.dll
+*.msi
+*.jar
+*.zip
+*.test
+/dist/
+/build/
+/bin/
+
+# Local project handoff report
+/REPORT.md
+
+# Local credentials and environment files
+.env
+.env.*
+!.env.example
+*.key
+*.pem
+*.pfx
+*.p12
+
+# GameDock runtime data at the repository root
+/active/
+/backups/
+/recovery/
+/data/
+.gamedock-*
+.gamedock.lock
+.incoming/
+.previous/
+.pending/
+
+# Minecraft saves and generated server data
+/world/
+world_nether/
+world_the_end/
+level.dat
+level.dat_old
+session.lock
+*.mca
+*.mcc
+eula.txt
+server.properties
+usercache.json
+ops.json
+whitelist.json
+banned-ips.json
+banned-players.json
+
+# Tool and runtime caches
+*.log
+*.log.gz
+logs/
+crash-reports/
+.cache/
+cache/
+node_modules/
+*.exe.WebView2/
